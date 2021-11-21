@@ -16,9 +16,7 @@ PATTERN		= $(wildcard $(NUM)/pattern/input*)
 all: $(TARGET)
 
 test: all
-	@echo $(PATTERN)
 	$(TARGET) < $(PATTERN)
-
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $<
