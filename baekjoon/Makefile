@@ -16,7 +16,8 @@ TESTS			= $(wildcard $(NUM)/tests/input*)
 all: $(TARGET)
 
 test: all
-	$(TARGET) < $(TESTS)
+	@echo Question NUM: $(NUM)
+	@for i in $(TESTS); do echo -----$$i-----; $(TARGET) < $$i; done
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $<
