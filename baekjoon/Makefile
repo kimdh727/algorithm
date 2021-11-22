@@ -11,12 +11,12 @@ OBJS			= $(patsubst $(NUM)/%.cpp,$(OBJSDIR)/%.o,$(SRCS))
 
 TARGET		= $(NUM)/run.out
 
-PATTERN		= $(wildcard $(NUM)/pattern/input*)
+TESTS			= $(wildcard $(NUM)/tests/input*)
 
 all: $(TARGET)
 
 test: all
-	$(TARGET) < $(PATTERN)
+	$(TARGET) < $(TESTS)
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $<
