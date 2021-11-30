@@ -1,3 +1,4 @@
+SHELL	:= /bin/bash
 
 # Problem Num
 NUM					= 1000
@@ -23,13 +24,18 @@ PYTHON3			= $(VENV)/bin/python3
 
 # Tests
 TESTS_DIR		= $(PROBLEM_DIR)/tests
-TESTS				= $(wildcard $(TESTS_DIR)/input*)
+TESTS_IN		= $(wildcard $(TESTS_DIR)/input*)
+TESTS_OUT		= $(patsubst $(TESTS_DIR)/input%,$(TESTS_DIR)/output%,$(TESTS_IN))
 
 all: $(TARGET)
 
 test: all
 	@echo Problem NUM: $(NUM)
-	@for i in $(TESTS); do echo -----$$i-----; $(TARGET) < $$i; done
+	@for i in $(TESTS_IN); \
+	do \
+		output=$$(echo $$i | sed 's/input/output/'); \
+		diff $$output <($(TARGET) < $$i) -w -q; \
+	done
 
 $(TARGET): $(OBJS)
 	@ $(CXX) $(CXXFLAGS) -o $@ $<
