@@ -49,6 +49,10 @@ $(OBJS_DIR):
 gen: $(VENV)
 	$(PYTHON3) $(SCRIPTS_DIR)/problem_parser.py -n $(NUM) -d $(SRCS_DIR)
 
+$(VENV):
+	python3 -m venv $@
+	$@/bin/pip install -r requirements.txt
+
 clean:
 	rm -rf $(OBJS_DIR)
 	rm -f $(TARGET)
