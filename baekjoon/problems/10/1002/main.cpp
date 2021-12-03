@@ -8,7 +8,7 @@ int main() {
 
   std::cin >> T;
 
-  while (T) {
+  while (T--) {
     std::cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
     int dx = x1 - x2;
     int dy = y1 - y2;
@@ -26,7 +26,5 @@ int main() {
     }
 
     std::cout << res << std::endl;
-
-    T--;
   }
 }

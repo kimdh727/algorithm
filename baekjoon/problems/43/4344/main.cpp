@@ -25,7 +25,7 @@ int main() {
       if (arr[i] > avg)
         cnt++;
 
-    delete arr;
+    delete [] arr;
 
     printf("%.3lf%%\n", (double)cnt / (double)N * 100);
   }
