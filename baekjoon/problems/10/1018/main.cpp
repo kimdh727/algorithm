@@ -31,5 +31,7 @@ int main() {
     }
   }
 
+  delete [] board;
+
   std::cout << min << std::endl;
 }
